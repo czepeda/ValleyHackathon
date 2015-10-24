@@ -1,12 +1,25 @@
 require 'web_viewer_service'
-require 'html_emitter'
 class WebviewController < ApplicationController
   def view
+  	page_url = 'http://www.cesarzepeda.net/index.html'
   	he = HtmlEmitter.new()
   	pl = ParaListener.new()
   	he.addListener(pl)
-  	he.parse('http://www.cesarzepeda.net/index.html')
+  	he.parse(page_url)
+  	@page_url = page_url
+  	@text = pl.data.html_safe
+  end
 
-  	render :text => pl.data
+  def update_page_position
+  	line = params[:line_number]
+  	url = params[:url]
+  	view = WebView.find_by_url(url)
+  	if !view
+  		view = WebView.new
+  		view.url = url
+  	end
+  	view.line_number = line
+  	view.save
+  	render json: {:view => view}
   end
 end

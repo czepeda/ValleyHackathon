@@ -1,9 +1,11 @@
 class ParaListener
 	def initialize
 		@data = ""
+		@line = 1
 	end
 	def para(el)
-		@data << "#{el[:text]}\n"
+		@data << "<p data-line='#{@line}' class='marker'>#{el[:text]}</p>"
+		@line+=1
 	end
 
 	def data

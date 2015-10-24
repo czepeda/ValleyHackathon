@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: webviews
+#
+#  id          :integer          not null, primary key
+#  aurl        :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  line_number :integer
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
