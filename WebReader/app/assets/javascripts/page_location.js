@@ -13,9 +13,17 @@ $(function() {
 
    //If last lien changed sent result to method
    if (changed) {
-   	   method()
-    } 	 
+   	  $.ajax({ 
+      type: "GET", 
+      url: '/update_page_position',  
+      data: {"line_number": last_line, "url": page_url}, 
+      dataType: "script" 
+  },
+  success: fucntion(data) {
+  	console.log(data)
+  }
+});
+
+     	 
     	   
-  }, 1000)                              
-})
 
