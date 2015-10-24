@@ -1,10 +1,11 @@
 require 'web_viewer_service'
 class WebviewController < ApplicationController
   def view
-  	wvs = WebviewerService.new()
-  	str = wvs.read_url('http://www.cesarzepeda.net/index.html')
-  	      wvs.emit_p(str)
+  	he = HtmlEmitter.new()
+  	pl = ParaListener.new()
+  	he.addListener(pl)
+  	he.parse('http://www.cesarzepeda.net/index.html')
 
-  	render :text => str
+  	render :text => pl.data
   end
 end
