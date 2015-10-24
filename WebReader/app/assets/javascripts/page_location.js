@@ -17,10 +17,12 @@ $(function() {
       type: "GET", 
       url: '/update_page_position',  
       data: {"line_number": last_line, "url": page_url}, 
-      dataType: "script" 
-  },
-  success: fucntion(data) {
-  	console.log(data)
+      dataType: "script", 
+
+      success: fucntion(data) {
+  	  console.log(data);
+    });
+  
   }
 });
 
