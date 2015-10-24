@@ -2,6 +2,9 @@ require 'net/https'
 
 
 class WebviewerService
+	def init
+		@start = 0
+	end
 	def read_url(url)
 		uri = URI(url)
 		x = Net::HTTP.get(uri)
@@ -10,16 +13,28 @@ class WebviewerService
 		x
 	end
 
-	def emit_p(str)
+	def split_into_lines(str)
         
-        str.split(/\r?\n/).each_with_index do |line, index|
-        
-        	puts "#{index+1}: #{line}"
+        lines = str.split(/\r?\n/)
+        @length = lines.length
+    end
 
-    	end
+    def emit_p(array)
+    	do
+    		if (@start > @length) 
+    			return nil
+    		end
+    		str = array[@start]
+    		@start = @start + 1
 
 
-	end
+    	while ! ( str =~ /<p>(.*)<\/p>/ )
+    		result = $_
+    		{type: 'P', text: result}
+
+
+    end
+
 
 
 end
