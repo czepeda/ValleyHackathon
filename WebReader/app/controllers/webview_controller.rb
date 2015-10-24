@@ -1,4 +1,5 @@
 require 'web_viewer_service'
+require 'html_emitter'
 class WebviewController < ApplicationController
   def view
   	he = HtmlEmitter.new()
