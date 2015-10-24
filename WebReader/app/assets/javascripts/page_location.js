@@ -19,7 +19,7 @@ $(function() {
       data: {"line_number": last_line, "url": page_url}, 
       dataType: "script", 
 
-      success: fucntion(data) {
+      success: function(data) {
   	  console.log(data);
     });
   
