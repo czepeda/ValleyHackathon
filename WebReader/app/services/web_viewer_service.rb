@@ -11,16 +11,15 @@ class WebviewerService
 	end
 
 	def emit_p(str)
-		line_num=0
         
-        str.split(/\r\n/).each_line do |line|
+        str.split(/\r?\n/).each_with_index do |line, index|
         
-        	puts "#{line_num}: #{line}"
-            line_num++
-    end
+        	puts "#{index+1}: #{line}"
+
+    	end
 
 
-end
+	end
 
 
 end
