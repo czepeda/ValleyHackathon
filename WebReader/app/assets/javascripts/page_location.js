@@ -1,4 +1,3 @@
-
 $(function() {
 	last_line = 1
   setInterval(function() {
@@ -9,23 +8,47 @@ $(function() {
     	  last_line = line
     	  changed = true
     	} 
-	});
+	})
 
-   //If last lien changed sent result to method
+
+    //If last line changed sent result to method
    if (changed) {
-   	  $.ajax({ 
+      $.ajax({ 
       type: "GET", 
       url: '/update_page_position',  
       data: {"line_number": last_line, "url": page_url}, 
       dataType: "script", 
 
       success: function(data) {
-  	  console.log(data);
-    });
-  
-  }
-});
+      console.log(data);
+    }  
+  });
+}})}); 
 
-     	 
-    	   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
 
