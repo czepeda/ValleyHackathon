@@ -10,5 +10,5 @@
 #
 
 class Webview < ActiveRecord::Base
-	attr_accessor :url, :line_number
+	#attr_accessor :url, :line_number
 end

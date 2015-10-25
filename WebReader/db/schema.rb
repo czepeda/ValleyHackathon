@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024204639) do
+ActiveRecord::Schema.define(version: 20151024154532) do
 
   create_table "webviews", force: true do |t|
     t.string   "url"
+    t.integer  "line_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "line_number"
   end
 
 end

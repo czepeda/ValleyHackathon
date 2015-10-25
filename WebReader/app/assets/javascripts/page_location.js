@@ -20,52 +20,24 @@ $(function() {
       dataType: "script", 
 
       success: function(data) {
-      console.log(data);
-    }  
-  });
-}}
+        console.log(data);
+      }  
+    });
+  }
+
+
+});
 
 $('a.image_view').on('click', function(e){
     e.preventDefault();
-    a = $(this)
-    $('#popup').load($(this).prop('a'), function(){
+    console.log("here");
+    a = $(this);
+    console.log("http://www.cesarzepeda.net/"+a.attr("link"));
+    $("#imagepopup").attr("src", "http://www.cesarzepeda.net/"+a.attr("link"));
+    $('#popup').load(function(){
         $('#popup').dialog('open');
         $("#imagepopup").attr("src", a.attr("link"))
     });
 });
-
-
-
-
-
-
-
 }); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
 

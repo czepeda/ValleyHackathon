@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'webview/view'
+  get 'webview/update_page_position'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

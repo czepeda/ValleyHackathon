@@ -3,17 +3,10 @@
 page_url = "<%= @page_url %>"
 </script>
 <script language="Javascript" src="/assets/page_location.js"></script>
-<div style="width: 100px; float: right; clear: left">adasdas
-asdasd
-adasda
-das
-d
-asd
-asd
-asd
-asd
-as
-dasd
+<div style="width: 100px; float: right; clear: left">
+<% @images.each do |img| %>
+<a link="<%=img%>" class="image_view">Image</a></br>
+<% end %>
 </div>
 <div style="width: 500px"><%= @text %></div>
 
@@ -22,5 +15,5 @@ dasd
 
 <div data-role="popup" id="myPopup">
       <p>This is my picture!</p> 
-      <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="skaret.jpg" style="width:800px;height:400px;" alt="Skaret View">
+      <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img id="imagepopup" src="skaret.jpg" style="width:800px;height:400px;" alt="Skaret View">
     </div>

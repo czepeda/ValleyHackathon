@@ -17,8 +17,9 @@ class WebviewerService
         @array = str.split(/\r?\n/)
     end
 
-    def emit_p
+    def emit_elements
         length = @array.length
+        el = nil
     	loop do
     		if (@index > length) 
     			return nil
@@ -26,10 +27,14 @@ class WebviewerService
     		str = @array[@index]
     		@index = @index + 1
 
+    	    case str 
+                when /<p>(.*)<\/p>/ then el = {type: 'P', text: $1, line: @index}
+                when /<img.+src=\"([^\"]*)\".*>/ then el = {type: 'IMG', image: $1, line: @index}    
+                when /<img.+src='([^'']*)'.*>/ then el = {type: 'IMG', image: $1, line: @index}    
+            end
 
-    	   break if ( str =~ /<p>(.*)<\/p>/ )
+            break if el
         end
-    	result = $1
-    	{type: 'P', text: result}
+    	el
     end
 end

@@ -4,22 +4,30 @@ class WebviewController < ApplicationController
   	page_url = 'http://www.cesarzepeda.net/index.html'
   	he = HtmlEmitter.new()
   	pl = ParaListener.new()
+  	il = ImageListener.new()
   	he.addListener(pl)
+  	he.addListener(il)
   	he.parse(page_url)
   	@page_url = page_url
   	@text = pl.data.html_safe
+  	@images = il.images
   end
 
   def update_page_position
   	line = params[:line_number]
   	url = params[:url]
-  	view = WebView.find_by_url(url)
+  	view = Webview.find_by_url(url)
   	if !view
-  		view = WebView.new
+  		view = Webview.new
   		view.url = url
   	end
+    puts("~~~~~~~~~~~~~~~~~~~~~ #{line}: #{url}")
   	view.line_number = line
-  	view.save
+  	if(!view.save!()) 
+      puts "ERROR!!!"
+    end
+    puts("~~~~~~~~~~~~~~~~~~~~~ #{view.line_number}: #{view.url}")
+    
   	render json: {:view => view}
   end
 end
