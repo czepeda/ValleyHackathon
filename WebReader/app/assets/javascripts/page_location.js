@@ -23,7 +23,24 @@ $(function() {
       console.log(data);
     }  
   });
-}})}); 
+}}
+
+$('a.image_view').on('click', function(e){
+    e.preventDefault();
+    a = $(this)
+    $('#popup').load($(this).prop('a'), function(){
+        $('#popup').dialog('open');
+        $("#imagepopup").attr("src", a.attr("link"))
+    });
+});
+
+
+
+
+
+
+
+}); 
 
 
 
